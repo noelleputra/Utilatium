@@ -66,7 +66,7 @@ public class ConfigManager {
             buttonsBySlot.put(slot, button);
         }
 
-        plugin.getLogger().info("Loaded " + buttonsBySlot.size() + " button(s) dari config.yml");
+        plugin.getLogger().info("Loaded " + buttonsBySlot.size() + " button(s) from config.yml");
     }
 
     public Map<Integer, ButtonConfig> getButtonsBySlot() {

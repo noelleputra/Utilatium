@@ -1,44 +1,26 @@
-# Inventarium - konfigurasi button inventory (STANDALONE, tidak butuh plugin item lain)
-#
-# Setiap entry di "buttons" adalah satu item native Inventarium yang akan:
-#  - otomatis diberikan ke player sejak join / respawn (jadi "default state", bukan
-#    sesuatu yang perlu di-trigger manual)
-#  - dikunci permanen di slot yang kamu tentukan kalau protect: true
-#    (gak bisa dipindah / dibuang / kena shift-click / hilang saat mati)
-#  - menjalankan "command" AS PLAYER kalau execute-on-air-click / execute-on-block-click aktif,
-#    termasuk saat klik ke udara kosong
-#
-# slot pakai indeks PlayerInventory Bukkit:
-#   0-8   = hotbar (kiri ke kanan)
-#   9-35  = inventory utama (bukan hotbar)
-#   36-39 = armor (36 boots, 37 leggings, 38 chestplate, 39 helmet)
-#   40    = offhand
-#
-# command ditulis TANPA garis miring di depan (tanpa "/"), dijalankan seolah player
-# sendiri yang ngetik. Contoh: "equipment", "warp spawn", "menu shop".
-
 buttons:
 
   menu_button:
-    slot: 8                      # hotbar slot ke-9 (index 8) — default menu button
-    material: MUSIC_DISC_5
+    slot: 8                      # hotbar slot 9 (index 8) — default menu button
+    material: RECOVERY_COMPASS
     name: "&6Navigator"
     lore:
-      - "&7Brave adventurer"
-      - ""
-      - "&eClick to open!"
+      - '&7Access your personal'
+      - '&7Equipment menu.'
+      - ''
+      - '&eClick to open!'
     command: "equipment"
     execute-on-air-click: true
     execute-on-block-click: true
     protect: true
 
-  # contoh button kedua, taruh di inventory utama (bukan hotbar)
+  # example
   # warp_button:
   #   slot: 13
   #   material: ENDER_PEARL
   #   name: "&bWarp Spawn"
   #   lore:
-  #     - "&7Klik untuk kembali ke spawn"
+  #     - "&7Spawn"
   #   command: "warp spawn"
   #   execute-on-air-click: false
   #   execute-on-block-click: false

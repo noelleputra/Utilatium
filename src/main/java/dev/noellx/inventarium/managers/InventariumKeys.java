@@ -6,11 +6,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
-/**
- * NamespacedKey dipakai buat nandain (tag) tiap item button dengan PersistentDataContainer,
- * supaya sistem lock bisa mastiin item di suatu slot itu MEMANG instance resmi dari
- * Inventarium (bukan cuma "keliatan mirip" via material/name/lore).
- */
 public final class InventariumKeys {
 
     private static NamespacedKey buttonIdKey;

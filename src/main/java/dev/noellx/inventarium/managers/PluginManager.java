@@ -15,8 +15,5 @@ public class PluginManager {
     }
 
     public void initialize() {
-        // ButtonLockManager & ConfigManager pakai lazy singleton sendiri (getInstance()),
-        // jadi tidak perlu di-init manual di sini. Tambahkan manager lain di sini
-        // kalau nanti perlu ada state yang di-load saat startup.
     }
 }

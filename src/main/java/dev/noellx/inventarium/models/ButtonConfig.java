@@ -9,25 +9,14 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.List;
 
-/**
- * Representasi satu button dari config.yml. Standalone — tidak bergantung plugin item
- * manapun (MMOItems dll). Item dibangun native pakai Material biasa + di-tag PDC supaya
- * sistem lock bisa memverifikasi identitas item secara pasti.
- *
- * "slot" pakai indeks PlayerInventory Bukkit:
- *   0-8   = hotbar
- *   9-35  = inventory utama
- *   36-39 = armor (36 boots, 37 leggings, 38 chestplate, 39 helmet)
- *   40    = offhand
- */
 public class ButtonConfig {
 
     private final String id;
     private final int slot;
     private final Material material;
-    private final String displayName;    // nullable
-    private final List<String> lore;     // nullable
-    private final String command;        // dijalankan as-player, tanpa slash
+    private final String displayName;
+    private final List<String> lore;     
+    private final String command; // do not use "/" to run as player, instead use / to run as console     
     private final boolean executeOnAirClick;
     private final boolean executeOnBlockClick;
     private final boolean protect;
