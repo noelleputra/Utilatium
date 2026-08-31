@@ -1,0 +1,6 @@
+main: dev.noellx.inventarium.Inventarium
+version: 1.0.0
+name: Inventarium
+author: Noellx
+description: Noelle Private Plugin
+api-version: 1.21
