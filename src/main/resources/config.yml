@@ -5,11 +5,14 @@ buttons:
     material: RECOVERY_COMPASS
     name: "&6Navigator"
     lore:
-      - '&7Access your personal'
-      - '&7Equipment menu.'
+      - '&7View all of your personal'
+      - '&7progress including your Skills'
+      - '&7Collections, Bestiary, and more!'
       - ''
       - '&eClick to open!'
-    command: "equipment"
+    command: "/pa open main_menu %player_name%"
+    # use "/give %player_name% diamond 1" to run as console
+    # Runs as the server console when the command starts with a leading slash.
     execute-on-air-click: true
     execute-on-block-click: true
     protect: true
@@ -21,7 +24,8 @@ buttons:
   #   name: "&bWarp Spawn"
   #   lore:
   #     - "&7Spawn"
-  #   command: "warp spawn"
+  #   command: "warp spawn"      # player command
+  #   # command: "/give %player_name% diamond 1"  # run as console
   #   execute-on-air-click: false
   #   execute-on-block-click: false
   #   protect: true

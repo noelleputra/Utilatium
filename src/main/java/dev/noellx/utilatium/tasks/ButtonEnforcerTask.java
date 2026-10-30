@@ -1,10 +1,11 @@
-package dev.noellx.inventarium.tasks;
+package dev.noellx.utilatium.tasks;
 
-import dev.noellx.inventarium.managers.ButtonLockManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import dev.noellx.utilatium.managers.inventarium.ButtonLockManager;
 
 public class ButtonEnforcerTask extends BukkitRunnable {
 

@@ -1,4 +1,4 @@
-package dev.noellx.inventarium.managers;
+package dev.noellx.utilatium.managers.inventarium;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.Plugin;
@@ -25,7 +25,7 @@ public final class InventariumKeys {
 
     public static NamespacedKey buttonId() {
         if (buttonIdKey == null) {
-            throw new IllegalStateException("InventariumKeys.init(plugin) belum dipanggil.");
+            throw new IllegalStateException("InventariumKeys.init(plugin) not called.");
         }
         return buttonIdKey;
     }

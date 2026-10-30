@@ -1,4 +1,4 @@
-package dev.noellx.inventarium.managers;
+package dev.noellx.utilatium.managers.particles;
 
 
 
@@ -15,5 +15,6 @@ public class PluginManager {
     }
 
     public void initialize() {
+        // Initialize your managers here
     }
 }

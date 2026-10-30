@@ -1,11 +1,12 @@
-package dev.noellx.inventarium.models;
+package dev.noellx.utilatium.gui;
 
-import dev.noellx.inventarium.managers.InventariumKeys;
-import dev.noellx.inventarium.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+
+import dev.noellx.utilatium.managers.inventarium.InventariumKeys;
+import dev.noellx.utilatium.utils.Utils;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ButtonConfig {
     private final Material material;
     private final String displayName;
     private final List<String> lore;     
-    private final String command; // do not use "/" to run as player, instead use / to run as console     
+    private final String command;
     private final boolean executeOnAirClick;
     private final boolean executeOnBlockClick;
     private final boolean protect;
@@ -42,11 +43,6 @@ public class ButtonConfig {
     public boolean isExecuteOnBlockClick() { return executeOnBlockClick; }
     public boolean isProtect() { return protect; }
 
-    /**
-     * Build ItemStack resmi buat button ini, ditag dengan PersistentDataContainer
-     * (key "button_id" = id button ini) supaya identitasnya bisa diverifikasi pasti,
-     * bukan cuma dibandingkan lewat isSimilar().
-     */
     public ItemStack buildItem() {
         ItemStack item = new ItemStack(material != null ? material : Material.PAPER);
         ItemMeta meta = item.getItemMeta();

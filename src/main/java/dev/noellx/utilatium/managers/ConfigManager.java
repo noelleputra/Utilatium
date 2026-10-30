@@ -1,9 +1,10 @@
-package dev.noellx.inventarium.managers;
+package dev.noellx.utilatium.managers;
 
-import dev.noellx.inventarium.models.ButtonConfig;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import dev.noellx.utilatium.gui.ButtonConfig;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,7 +31,7 @@ public class ConfigManager {
 
         ConfigurationSection buttonsSection = plugin.getConfig().getConfigurationSection("buttons");
         if (buttonsSection == null) {
-            plugin.getLogger().warning("Tidak ada section 'buttons' di config.yml — tidak ada button yang di-load.");
+            plugin.getLogger().warning("No section 'buttons' in config.yml — skipped button load.");
             return;
         }
 
@@ -39,17 +40,17 @@ public class ConfigManager {
             if (sec == null) continue;
 
             if (!sec.isInt("slot")) {
-                plugin.getLogger().warning("Button '" + id + "' tidak punya 'slot' yang valid, dilewati.");
+                plugin.getLogger().warning("Button '" + id + "' do not have 'slot' valid, skip.");
                 continue;
             }
             int slot = sec.getInt("slot");
             if (slot < 0 || slot > 40) {
-                plugin.getLogger().warning("Button '" + id + "' slot=" + slot + " di luar range 0-40, dilewati.");
+                plugin.getLogger().warning("Button '" + id + "' slot=" + slot + " out range 0-40, skip.");
                 continue;
             }
             if (buttonsBySlot.containsKey(slot)) {
-                plugin.getLogger().warning("Button '" + id + "' pakai slot " + slot
-                        + " yang sudah dipakai button lain, dilewati.");
+                plugin.getLogger().warning("Button '" + id + "' using slot " + slot
+                        + " used by another button, skipped.");
                 continue;
             }
 
@@ -57,12 +58,22 @@ public class ConfigManager {
             String name = sec.getString("name", null);
             var lore = sec.getStringList("lore");
             String command = sec.getString("command", "");
+            String legacyConsoleCommand = sec.getString("console-command", "");
             boolean executeOnAir = sec.getBoolean("execute-on-air-click", false);
             boolean executeOnBlock = sec.getBoolean("execute-on-block-click", false);
             boolean protect = sec.getBoolean("protect", true);
 
+            if (!legacyConsoleCommand.isBlank()) {
+                if (command == null || command.isBlank()) {
+                    command = "/" + legacyConsoleCommand;
+                } else {
+                    plugin.getLogger().warning("Button '" + id + "' has both 'command' and deprecated 'console-command'; 'command' takes precedence.");
+                }
+            }
+
             ButtonConfig button = new ButtonConfig(id, slot, material,
-                    name, lore.isEmpty() ? null : lore, command, executeOnAir, executeOnBlock, protect);
+                    name, lore.isEmpty() ? null : lore, command,
+                    executeOnAir, executeOnBlock, protect);
             buttonsBySlot.put(slot, button);
         }
 

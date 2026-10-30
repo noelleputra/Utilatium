@@ -1,8 +1,5 @@
-package dev.noellx.inventarium.listeners;
+package dev.noellx.utilatium.listeners;
 
-import dev.noellx.inventarium.managers.ButtonLockManager;
-import dev.noellx.inventarium.managers.ConfigManager;
-import dev.noellx.inventarium.models.ButtonConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -15,6 +12,10 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import dev.noellx.utilatium.gui.ButtonConfig;
+import dev.noellx.utilatium.managers.ConfigManager;
+import dev.noellx.utilatium.managers.inventarium.ButtonLockManager;
 
 import java.util.HashSet;
 import java.util.Set;

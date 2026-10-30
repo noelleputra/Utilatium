@@ -1,8 +1,5 @@
-package dev.noellx.inventarium.listeners;
+package dev.noellx.utilatium.listeners;
 
-import dev.noellx.inventarium.managers.ButtonLockManager;
-import dev.noellx.inventarium.managers.ConfigManager;
-import dev.noellx.inventarium.models.ButtonConfig;
 import io.papermc.paper.event.player.PlayerPickItemEvent;
 import io.papermc.paper.event.player.PlayerSwapWithEquipmentSlotEvent;
 import org.bukkit.entity.Player;
@@ -17,6 +14,10 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import dev.noellx.utilatium.gui.ButtonConfig;
+import dev.noellx.utilatium.managers.ConfigManager;
+import dev.noellx.utilatium.managers.inventarium.ButtonLockManager;
 
 /** Cancels all player inventory paths that can move/take/replace a protected button. */
 public final class ButtonBukkitListener implements Listener {
@@ -76,15 +77,16 @@ public final class ButtonBukkitListener implements Listener {
             return;
         }
 
-        // Prevent indirect movement into any reserved slot.
-        if (event.isShiftClick() || event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY
-                || event.getAction() == InventoryAction.COLLECT_TO_CURSOR
-                || event.getClick() == ClickType.DOUBLE_CLICK) {
-            event.setCancelled(true);
-            repairNextTick(player);
-            return;
-        }
-
+        /*
+         * Do NOT cancel generic inventory movement here.
+         *
+         * A protected button only owns its configured slot. Ordinary player
+         * inventory items must remain fully movable, including shift-clicking
+         * into/out of containers. Since protected slots always contain their
+         * button, normal shift-click movement cannot replace an occupied
+         * protected slot; the explicit locked-slot checks above handle the
+         * cases where the protected item itself is involved.
+         */
         if (touchesReservedHotbar(event, player)) {
             event.setCancelled(true);
             repairNextTick(player);

@@ -1,8 +1,9 @@
-package dev.noellx.inventarium.managers;
+package dev.noellx.utilatium.managers.inventarium;
 
-import dev.noellx.inventarium.models.ButtonConfig;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
+import dev.noellx.utilatium.gui.ButtonConfig;
 
 import java.util.HashSet;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package dev.noellx.inventarium.utils;
+package dev.noellx.utilatium.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

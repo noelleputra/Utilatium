@@ -1,0 +1,18 @@
+# =====================================================
+#  Utilatium - Messages Configuration
+#  All player-facing messages can be edited here.
+#  Color codes: '&' codes (e.g. &a, &c) and hex (&#RRGGBB) are supported.
+#
+#  Placeholders available per-message are listed above each entry.
+# =====================================================
+
+prefix: "&r"
+
+particle:
+  player-only: "&cThis command can only be used by players."
+  usage: "&eUsage: /particle <LOW|MEDIUM|HIGH|EXTREME>"
+  invalid-level: "&cThe level must be &fLOW&c, &fMEDIUM&c, &fHIGH&c, or &fEXTREME&c."
+  success: "&aYour particle setting is now: &f%level%"
+
+general:
+  no-permission: "&cYou don't have permission to do that."
